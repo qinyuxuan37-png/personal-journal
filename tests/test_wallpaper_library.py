@@ -25,7 +25,9 @@ class QuietWallpaper(server.WallpaperHandler):
 class WallpaperLibraryTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
-        self.base = Path(self.temp.name)
+        # Windows runners may expose TEMP through an 8.3 alias (RUNNER~1).
+        # Production configuration resolves paths too; use canonical fixtures.
+        self.base = Path(self.temp.name).resolve()
         self.library = self.base / "431960"
         self.web = self.make_item("100", {"type": "Web", "file": "index.html", "title": "Web", "preview": "preview.png"})
         (self.web / "index.html").write_text("<body>wallpaper</body>", encoding="utf-8")
