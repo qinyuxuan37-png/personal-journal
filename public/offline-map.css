@@ -1,0 +1,80 @@
+/* Coastlines, labels and grid lines sit directly over the live wallpaper. */
+.single-screen .hero-side.map-card {
+  width: 290px; max-width: min(330px,38%); gap: 0; align-items: stretch;
+  border: 1px solid rgba(255,255,255,.18); border-radius: var(--space-radius);
+  background: rgba(6,20,23,.18); backdrop-filter: blur(2px); overflow: auto;
+}
+.map-scene { position: relative; isolation: isolate; flex: none; width: 100%; height: 230px; min-height: 150px; }
+.map-preview { position: absolute; inset: 0; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; color: var(--space-text); cursor: pointer; text-align: left; }
+.map-preview:hover { background: rgba(255,255,255,.035); }
+.map-preview svg { display: block; width: 100%; height: 100%; }
+.map-preview-status { position: absolute; top: 12px; right: 14px; left: 14px; color: var(--space-muted); font-size: 11px; line-height: 1.4; text-align: right; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-shadow: 0 1px 5px rgba(0,0,0,.55); }
+.single-screen .map-card .map-scene .place-time { position: absolute; inset: auto 0 0; z-index: 1; display: grid; gap: 3px; padding: 28px 16px 12px; border: 0; border-radius: 0; background: linear-gradient(transparent,rgba(3,17,20,.2)); backdrop-filter: none; min-width: 0; width: 100%; pointer-events: none; text-shadow: 0 1px 5px rgba(0,0,0,.55); }
+.map-scene #city { font-size: 13px; font-weight: 550; line-height: 1.4; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.single-screen #about .map-scene .place-time time { font-size: 11px; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.single-screen #about.has-layout .map-card { justify-content: flex-start; align-items: stretch; }
+/* The map fills the remaining space; its overlays never consume layout height. */
+.single-screen #about.has-layout .map-card .map-scene { height: auto; flex: 1 0 150px; }
+.single-screen .hero-side.map-card { scrollbar-width: none; }
+.map-card::-webkit-scrollbar { display: none; }
+.weather-panel { box-sizing: border-box; flex: none; width: 100%; height: 120px; display: grid; grid-template-rows: 28px 48px 14px; gap: 4px; padding: 10px 16px 11px; border-top: 1px solid rgba(255,255,255,.1); color: var(--space-text); background: transparent; }
+.weather-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-width: 0; font-size: 12px; color: var(--space-muted); }
+.weather-heading button { flex: none; width: 76px; height: 28px; padding: 3px 8px; border: 1px solid rgba(255,255,255,.2); border-radius: 99px; background: transparent; color: var(--space-text); font: inherit; font-size: 11px; white-space: nowrap; cursor: pointer; }
+.weather-heading button:hover { background: rgba(255,255,255,.07); }
+.weather-heading button:focus-visible { outline: 2px solid var(--space-text); outline-offset: 2px; }
+.weather-reading { position: relative; min-width: 0; }
+#weather-data { position: absolute; inset: 0; }
+.weather-current { display: flex; align-items: baseline; gap: 10px; height: 29px; margin: 0; white-space: nowrap; }
+#weather-temperature { flex: none; font-size: 23px; font-weight: 550; letter-spacing: -.04em; line-height: 29px; font-variant-numeric: tabular-nums; }
+#weather-condition { min-width: 0; font-size: 12px; overflow: hidden; text-overflow: ellipsis; }
+.weather-details { display: flex; gap: 14px; font-size: 11px; line-height: 19px; color: var(--space-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.weather-placeholder { position: absolute; inset: 0; display: grid; grid-template-rows: 29px 19px; visibility: hidden; color: var(--space-muted); pointer-events: none; }
+.weather-placeholder span:first-child { font-size: 23px; font-weight: 550; line-height: 29px; letter-spacing: -.04em; }
+.weather-placeholder span:last-child { font-size: 11px; line-height: 19px; }
+#weather-data[hidden] + .weather-placeholder { visibility: visible; }
+.weather-status { flex: 1; min-width: 0; margin: 0; height: 14px; overflow: hidden; text-overflow: ellipsis; color: var(--space-muted); font-size: 10px; line-height: 14px; white-space: nowrap; text-align: right; }
+.weather-foot { display: flex; gap: 10px; min-width: 0; color: var(--space-muted); font-size: 10px; line-height: 14px; white-space: nowrap; }
+.weather-foot a { color: inherit; text-underline-offset: 2px; }
+.map-dialog { width: min(1000px,calc(100vw - 40px)); max-width: none; max-height: calc(100svh - 40px); padding: 24px; overflow: auto; color: var(--space-text); background: rgba(6,20,23,.2); border: 1px solid var(--space-line); border-radius: var(--space-radius-panel); backdrop-filter: blur(2px); box-shadow: var(--space-shadow); }
+.map-dialog::backdrop { background: rgba(0,0,0,.09); }
+.map-dialog[open] { animation: map-arrive 260ms var(--space-ease) both; }
+.map-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.map-dialog-toolbar { margin: -24px -24px -12px; padding: 24px 24px 12px; background: rgba(4,17,20,.14); border-radius: var(--space-radius-panel) var(--space-radius-panel) 0 0; }
+.map-dialog .eyebrow { margin: 0 0 7px; color: var(--space-muted); font-size: .65rem; }
+.map-dialog h2 { margin: 0; font-size: 1.4rem; }
+.map-location { margin: 12px 0 5px; font-size: .92rem; overflow-wrap: anywhere; }
+.map-coordinates { margin: 0; font-size: .72rem; color: var(--space-muted); font-variant-numeric: tabular-nums; }
+.map-viewport { position: relative; margin-top: 18px; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; overflow: hidden; background: transparent; }
+.offline-map-canvas { display: block; width: 100%; height: clamp(230px,50vh,500px); background: transparent; cursor: grab; touch-action: none; }
+.offline-map-canvas.is-dragging { cursor: grabbing; }
+.offline-map-land { fill: rgba(255,255,255,.025); stroke: rgba(255,255,255,.58); stroke-width: .7; vector-effect: non-scaling-stroke; pointer-events: none; }
+.offline-map-grid { fill: none; stroke: rgba(255,255,255,.12); stroke-width: .6; vector-effect: non-scaling-stroke; pointer-events: none; }
+.offline-map-marker { pointer-events: none; }
+.map-pin { fill: #fff; }
+.map-pin-halo { fill: rgba(255,255,255,.12); stroke: rgba(255,255,255,.7); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map-pin-label { fill: #fff; font-weight: 650; paint-order: stroke; stroke: rgba(0,10,12,.75); stroke-width: 3px; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.map-controls { position: absolute; right: 12px; bottom: 12px; display: flex; gap: 6px; }
+.map-dialog button,.map-dialog a[data-local-only] { min-height: 40px; padding: 8px 12px; border: 1px solid var(--space-line); border-radius: 10px; background: rgba(6,20,23,.22); color: var(--space-text); font: inherit; font-size: .78rem; cursor: pointer; text-decoration: none; }
+.map-dialog button:hover,.map-dialog a[data-local-only]:hover { background: var(--space-hover); border-color: var(--space-line-active); }
+.map-dialog button:disabled { opacity: .4; cursor: default; }
+.map-dialog #map-close { width: 44px; height: 44px; padding: 0; flex: none; border-radius: 50%; font-size: 1.4rem; }
+.map-controls button { min-width: 40px; }
+.map-status { font-size: .78rem; color: var(--space-muted); line-height: 1.6; }
+.map-choices { display: grid; gap: 8px; max-height: 150px; overflow: auto; }
+.map-choices button { text-align: left; }
+.map-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.map-foot small { color: var(--space-muted); font-size: .65rem; line-height: 1.7; }
+.map-foot small a { color: inherit; text-underline-offset: 3px; }
+.map-sources { color: var(--space-muted); font-size: 11px; }
+.map-sources summary { width: fit-content; padding: 8px 0; cursor: pointer; }
+.map-sources small { display: block; padding: 4px 0; }
+.map-dialog :focus-visible,.map-preview:focus-visible { outline: 2px solid var(--space-text); outline-offset: -3px; }
+@keyframes map-arrive { from { opacity: 0; transform: translateY(10px) scale(.99); } to { opacity: 1; transform: none; } }
+@media(max-width:760px) {
+  .single-screen .hero-side.map-card { width: 100%; max-width: none; align-self: stretch; flex-direction: column; flex-shrink: 0; }
+  .map-scene { height: 210px; }
+  .map-dialog { width: calc(100vw - 24px); max-height: calc(100svh - 24px); padding: 18px; }
+  .map-dialog-toolbar { margin: -18px -18px -12px; padding: 18px 18px 12px; }
+  .map-foot { align-items: flex-start; }
+}
+@media(prefers-reduced-motion:reduce) { .map-dialog[open] { animation: none; } }

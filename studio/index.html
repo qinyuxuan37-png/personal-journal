@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>内容管理 · 个人空间</title>
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <script src="/studio/embed.js"></script>
+  <link rel="stylesheet" href="/studio/style.css">
+  <link rel="stylesheet" href="/public/theme.css">
+  <link rel="stylesheet" href="/studio/motion.css">
+  <script src="/studio/wallpaper.js" defer></script>
+  <script src="/studio/motion.js" defer></script>
+  <script src="/studio/app.js" defer></script>
+</head>
+<body class="wallpaper-mode">
+  <div id="studio-wallpaper" class="studio-wallpaper" aria-hidden="true" hidden>
+    <iframe id="studio-wallpaper-frame" title="动态背景" tabindex="-1" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+    <div class="studio-wallpaper-shade"></div>
+  </div>
+  <a class="skip" href="#main">跳到内容</a>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="identity"><span class="logo">P / S</span><div><strong>个人空间</strong><small>本地内容管理</small></div></div>
+      <nav aria-label="管理栏目">
+        <span id="nav-indicator" class="nav-indicator" aria-hidden="true" hidden></span>
+        <p class="nav-label">私人记录</p>
+        <button data-view="home" class="active">总览</button>
+        <button data-view="private-profile">私人资料</button>
+        <button data-view="photos">照片</button>
+        <button data-view="notes">备忘录</button>
+        <button data-view="skills">Skill 收藏</button>
+        <button data-view="goals">目标</button>
+        <button data-view="diary">日记</button>
+        <button data-view="quotes">留给自己</button>
+        <p class="nav-label">公开主页</p>
+        <button data-view="public-profile">公开资料</button>
+        <button data-view="gallery">展示照片集</button>
+        <button data-view="tech">技术栈</button>
+        <button data-view="projects">开源项目</button>
+        <button data-view="games">喜欢的游戏</button>
+        <button data-view="anime">番剧 / 动漫</button>
+        <button data-view="music">爱听的音乐</button>
+        <p class="nav-label">数据</p>
+        <button data-view="backup">备份与恢复</button>
+      </nav>
+      <a class="preview-link" href="/" target="_blank" rel="noopener">打开公开主页 ↗</a>
+    </aside>
+    <main id="main" class="main">
+      <div class="mobile-nav"><label for="view-select">栏目</label><select id="view-select"></select></div>
+      <div id="notice" role="status" aria-live="polite" aria-atomic="true"></div>
+      <div id="view-stage">
+      <header class="page-head">
+        <div><p id="section-kicker" class="kicker">PRIVATE / SPACE</p><h1 id="section-title" tabindex="-1">总览</h1><p id="section-description" class="muted"></p></div>
+        <button id="add-button" class="primary" hidden>＋ 新增内容</button>
+      </header>
+      <div id="view-root"></div>
+      </div>
+    </main>
+  </div>
+  <dialog id="entry-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-scope">
+    <form id="entry-form">
+      <div class="dialog-head"><div><p id="dialog-kicker" class="kicker">PRIVATE / EDITOR</p><h2 id="dialog-title">新增内容</h2><p id="dialog-scope" class="dialog-scope">仅保存在本机</p></div><button type="button" id="close-dialog" class="icon-button" aria-label="关闭">×</button></div>
+      <div id="dialog-notice" class="dialog-notice" role="alert" hidden></div>
+      <div id="entry-fields" class="fields"></div>
+      <div class="dialog-actions"><button type="button" id="cancel-dialog" class="secondary">取消</button><button type="submit" class="primary">保存</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

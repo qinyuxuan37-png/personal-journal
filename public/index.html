@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>我的个人主页</title>
+  <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/public/style.css">
+  <link rel="stylesheet" href="/public/theme.css">
+  <link rel="stylesheet" href="/public/layout.css">
+  <link rel="stylesheet" href="/public/offline-map.css">
+  <link rel="stylesheet" href="/public/home-pages.css">
+  <link rel="stylesheet" href="/public/photo-album.css">
+  <link rel="stylesheet" href="/public/music-wall.css">
+  <link rel="stylesheet" href="/public/work-showcase.css">
+  <script src="/public/layout-model.js" defer></script>
+  <script src="/public/offline-map-model.js" defer></script>
+  <script src="/public/weather-model.js" defer></script>
+  <script src="/public/photo-album.js" defer></script>
+  <script src="/public/music-wall.js" defer></script>
+  <script src="/public/work-showcase.js" defer></script>
+  <script src="/public/app.js" defer></script>
+  <script src="/public/offline-map.js" defer></script>
+  <script src="/public/weather.js" defer></script>
+  <script src="/public/layout.js" defer></script>
+  <script src="/public/home-pages.js" defer></script>
+  <script src="/public/motion.js" defer></script>
+  <!-- local-editor:start -->
+  <link rel="stylesheet" href="/public/editor-motion.css">
+  <script src="/public/editor.js" defer></script>
+  <script src="/public/customize.js" defer></script>
+  <link rel="stylesheet" href="/public/wallpaper-library.css">
+  <script src="/public/wallpaper-library.js" defer></script>
+  <script src="/public/wallpaper-trial.js" defer></script>
+  <script src="/public/layout-editor.js" defer></script>
+  <!-- local-editor:end -->
+</head>
+<body>
+  <div id="site-shell" class="site-shell">
+  <div id="pond-stage" class="pond-stage" aria-hidden="true" hidden>
+    <iframe id="pond-frame" class="pond-frame" title="动态互动背景" tabindex="-1" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+    <div class="pond-shade"></div>
+  </div>
+  <a class="skip" href="#content">跳到内容</a>
+  <header class="topbar wrap">
+    <a class="brand" href="#about">PERSONAL / SPACE</a>
+    <!-- local-editor:start -->
+    <div class="topbar-actions" role="group" aria-label="管理个人空间">
+      <a class="layout-button" href="/studio" data-local-only>编辑空间 ↗</a>
+      <button id="wallpaper-diy" class="layout-button" type="button" aria-haspopup="dialog" aria-controls="wallpaper-dialog">DIY 空间</button>
+    </div>
+    <div id="layout-toolbar" class="layout-toolbar" role="group" aria-label="布局编辑" hidden>
+      <span>DIY / 布局</span>
+      <button id="layout-undo" type="button" title="Ctrl / ⌘ Z">撤销</button>
+      <button id="layout-redo" type="button" title="Ctrl / ⌘ Shift Z">重做</button>
+      <button id="layout-reset" type="button">恢复默认</button>
+      <button id="layout-cancel" type="button">取消</button>
+      <button id="layout-save" type="button">保存布局</button>
+    </div>
+    <!-- local-editor:end -->
+  </header>
+  <p id="panel-announcement" class="sr-only" role="status" aria-live="polite"></p>
+  <main id="content" class="wrap" tabindex="-1">
+    <section id="about" class="hero" data-home-page aria-label="第一页">
+      <div class="hero-copy profile-card reveal-item layout-item" data-layout="profile">
+        <div class="profile-content">
+          <div class="profile-portrait">
+            <div id="avatar-placeholder" class="avatar-placeholder" role="img" aria-label="待设置头像"></div>
+            <img id="avatar" class="avatar" alt="个人头像" hidden>
+          </div>
+          <h1 id="profile-name" tabindex="-1">我的空间</h1>
+          <p id="profile-intro" class="intro" hidden></p>
+          <nav class="profile-stats" aria-label="我的公开内容">
+            <a href="#tech" data-display-target="tech"><strong id="profile-tech-count">0</strong><span>技术栈</span></a>
+            <a href="#projects" data-display-target="projects"><strong id="profile-projects-count">0</strong><span>开源项目</span></a>
+            <a href="#interests" data-display-target="interests"><strong id="profile-interests-count">0</strong><span>兴趣收藏</span></a>
+          </nav>
+          <nav class="profile-links" aria-label="个人账号链接">
+            <a id="github-link" class="social-link" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 98 96" width="26" height="26" fill="none" aria-hidden="true"><g clip-path="url(#github-logo-clip)"><path d="M41.4395 69.3848C28.8066 67.8535 19.9062 58.7617 19.9062 46.9902C19.9062 42.2051 21.6289 37.0371 24.5 33.5918C23.2559 30.4336 23.4473 23.7344 24.8828 20.959C28.7109 20.4805 33.8789 22.4902 36.9414 25.2656C40.5781 24.1172 44.4062 23.543 49.0957 23.543C53.7852 23.543 57.6133 24.1172 61.0586 25.1699C64.0254 22.4902 69.2891 20.4805 73.1172 20.959C74.457 23.543 74.6484 30.2422 73.4043 33.4961C76.4668 37.1328 78.0937 42.0137 78.0937 46.9902C78.0937 58.7617 69.1934 67.6621 56.3691 69.2891C59.623 71.3945 61.8242 75.9883 61.8242 81.252L61.8242 91.2051C61.8242 94.0762 64.2168 95.7031 67.0879 94.5547C84.4102 87.9512 98 70.6289 98 49.1914C98 22.1074 75.9883 6.69539e-07 48.9043 4.309e-07C21.8203 1.92261e-07 -1.9479e-07 22.1074 -4.3343e-07 49.1914C-6.20631e-07 70.4375 13.4941 88.0469 31.6777 94.6504C34.2617 95.6074 36.75 93.8848 36.75 91.3008L36.75 83.6445C35.4102 84.2188 33.6875 84.6016 32.1562 84.6016C25.8398 84.6016 22.1074 81.1563 19.4277 74.7441C18.375 72.1602 17.2266 70.6289 15.0254 70.3418C13.877 70.2461 13.4941 69.7676 13.4941 69.1934C13.4941 68.0449 15.4082 67.1836 17.3223 67.1836C20.0977 67.1836 22.4902 68.9063 24.9785 72.4473C26.8926 75.2227 28.9023 76.4668 31.2949 76.4668C33.6875 76.4668 35.2187 75.6055 37.4199 73.4043C39.0469 71.7773 40.291 70.3418 41.4395 69.3848Z" fill="white"/></g><defs><clipPath id="github-logo-clip"><rect width="98" height="96" fill="white"/></clipPath></defs></svg>
+            </a>
+            <a id="social2-link" class="social-link" aria-label="抖音" title="抖音">
+              <svg id="social2-brand" viewBox="-1 -1 26 26" width="26" height="26" aria-hidden="true"><path fill="#25F4EE" transform="translate(-.8,-.5)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.8,.5)" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FFFFFF" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              <span id="social2-icon" class="social-monogram" aria-hidden="true" hidden></span>
+            </a>
+            <a id="social3-link" class="social-link" aria-label="哔哩哔哩" title="哔哩哔哩">
+              <svg id="social3-brand" viewBox="0 0 24 24" width="26" height="26" fill="#00A1D6" aria-hidden="true"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L9.653 4.44c.071.071.134.142.187.213h4.267a.836.836 0 0 1 .16-.213l2.853-2.747c.267-.249.573-.373.92-.373.347 0 .662.151.929.4.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373Z"/></svg>
+              <span id="social3-icon" class="social-monogram" aria-hidden="true" hidden>03</span>
+            </a>
+          </nav>
+          <span id="pond-status" class="pond-status" role="status" hidden></span>
+        </div>
+      </div>
+      <div class="hero-side map-card reveal-item layout-item" data-layout="clock">
+        <div class="map-scene">
+          <button id="map-preview" class="map-preview" type="button" aria-label="展开本地地图" aria-haspopup="dialog" aria-controls="map-dialog">
+            <svg id="map-mini" viewBox="0 0 1000 500" aria-hidden="true"></svg>
+            <span id="map-preview-status" class="map-preview-status">正在准备本地地图…</span>
+          </button>
+          <div class="place-time">
+            <span id="city">未设置地区</span>
+            <time id="clock" aria-label="当地时间">--:--:--</time>
+          </div>
+        </div>
+        <section id="weather-panel" class="weather-panel" aria-label="所在地区天气" data-default-enabled="false">
+          <div class="weather-heading">
+            <span>当地天气</span>
+            <button id="weather-toggle" type="button" aria-pressed="false" title="联网天气会向 Open-Meteo 发送城市级坐标，服务可见公网 IP；不读取 GPS，不发送私人记录。">启用联网</button>
+          </div>
+          <div class="weather-reading">
+            <div id="weather-data" hidden>
+              <div class="weather-current"><span id="weather-temperature">—</span><span id="weather-condition">—</span></div>
+              <div class="weather-details"><span id="weather-humidity">湿度 —</span><span id="weather-wind">风速 —</span></div>
+            </div>
+            <div class="weather-placeholder" aria-hidden="true"><span>— °C</span><span>湿度 —　风速 —</span></div>
+          </div>
+          <div class="weather-foot"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a><p id="weather-status" class="weather-status" role="status"></p></div>
+        </section>
+      </div>
+    </section>
+    <section id="photos" class="hero album-page" data-home-page aria-label="第二页">
+      <article id="photo-album" class="photo-album" data-space-module="photo-album" aria-labelledby="album-title">
+        <header class="album-header">
+          <div class="album-heading"><h2 id="album-title" tabindex="-1">照片集</h2><span id="album-count" class="album-count">0 张</span></div>
+        </header>
+        <div class="album-viewport" data-page-gesture-lock tabindex="0" role="region" aria-label="弧形照片集，可用滚轮、左右拖动或方向键旋转，居中的照片会向前突出">
+          <div id="album-strip" class="album-strip" role="list" aria-label="展示照片"></div>
+        </div>
+        <p id="album-empty" class="album-empty">还没有照片，留一页给你的生活。</p>
+      </article>
+    </section>
+    <section id="page-3" class="hero blank-page" data-home-page aria-label="第三页">
+      <h2 class="sr-only" tabindex="-1">第三页</h2>
+    </section>
+    <section id="page-4" class="hero blank-page" data-home-page aria-label="第四页">
+      <h2 class="sr-only" tabindex="-1">第四页</h2>
+    </section>
+    <nav id="home-pagination" class="home-pagination" aria-label="页面切换">
+      <a id="home-page-link" href="#about" aria-label="切换到第一页"></a>
+      <a id="photos-page-link" href="#photos" aria-label="切换到第二页"></a>
+      <a id="page-3-link" href="#page-3" aria-label="切换到第三页"></a>
+      <a id="page-4-link" href="#page-4" aria-label="切换到第四页"></a>
+    </nav>
+    <section id="music" class="section music-page" aria-label="爱听的音乐">
+      <header class="music-page-head">
+        <div><p class="music-eyebrow">A LITTLE WORLD OF SOUND</p><h2 tabindex="-1">爱听的音乐</h2><p class="music-page-caption">把喜欢的旋律，留在这里。</p></div>
+        <a class="music-back" href="#interests" aria-label="返回兴趣收藏"><span aria-hidden="true">‹</span></a>
+      </header>
+      <div id="music-wall" class="music-wall" role="group" aria-label="音乐封面墙"></div>
+      <p id="music-wall-status" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+    <section id="tech" class="section work-page" aria-label="技术栈">
+      <header class="work-page-head">
+        <div><span class="work-eyebrow">TOOLS / IN PRACTICE</span><h2 tabindex="-1">技术栈</h2><span id="tech-count" class="work-count">00 项</span><p>从界面到设备，在作品里实践。</p></div>
+        <a class="work-back" href="#about">返回主页 <small>Esc ↗</small></a>
+      </header>
+      <div id="tech-list" class="tool-groups"></div>
+      <div id="tech-detail" class="tool-detail" role="region" aria-label="技术实践说明" aria-live="polite" hidden></div>
+    </section>
+    <section id="projects" class="section work-page" aria-label="项目作品">
+      <header class="work-page-head">
+        <div><span class="work-eyebrow">SELECTED / WORKS</span><h2 tabindex="-1">项目作品</h2><span id="projects-count" class="work-count">00 项</span><p>从自己的日常出发，把想法做成作品。</p></div>
+        <a class="work-back" href="#about">返回主页 <small>Esc ↗</small></a>
+      </header>
+      <div id="projects-list" class="work-grid"></div>
+    </section>
+    <section id="interests" class="section interests-hub" aria-label="兴趣收藏">
+      <header class="music-page-head">
+        <div><p class="music-eyebrow">THINGS I LOVE</p><h2 tabindex="-1">兴趣收藏</h2><p class="music-page-caption">故事、世界，以及耳边的旋律。</p></div>
+        <a class="music-back" href="#about">返回主页 <span aria-hidden="true">↗</span></a>
+      </header>
+      <nav class="interest-destinations" aria-label="兴趣分类">
+        <a class="interest-destination" role="link" aria-disabled="true" tabindex="0"><small>01 / PLAY</small><strong>喜欢的游戏</strong><span>待续</span></a>
+        <a class="interest-destination" role="link" aria-disabled="true" tabindex="0"><small>02 / WATCH</small><strong>爱看的番剧 / 动漫</strong><span>待续</span></a>
+        <a class="interest-destination collection-music-entry" href="#music"><small>03 / LISTEN</small><strong>爱听的音乐</strong><span>走进音乐封面墙 ↗</span></a>
+      </nav>
+      <div data-display-deferred hidden inert>
+      <a class="panel-back" href="#about">← 返回主页 <small>Esc</small></a>
+      <div class="section-heading reveal-item"><span class="index">03 /</span><h2 tabindex="-1">兴趣收藏</h2><span id="interests-count" class="section-count" aria-label="兴趣条目数">00 项</span><p>在故事、世界与旋律里，遇见喜欢。</p></div>
+      <div class="interest-grid">
+        <div><h3>喜欢的游戏</h3><div id="games-list" class="interest-gallery"></div></div>
+        <div><h3>爱看的番剧 / 动漫</h3><div id="anime-list" class="interest-gallery"></div></div>
+      </div>
+      <section class="music-shelf" aria-labelledby="music-title">
+        <div class="music-shelf-heading"><div><span class="card-kicker">ON REPEAT / 循环收藏</span><h3 id="music-title">爱听的音乐</h3></div><span id="music-count" class="section-count" aria-label="音乐条目数">00 项</span></div>
+        <div id="music-list" class="music-gallery"></div>
+      </section>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap footer"><span>一个持续生长的个人空间。</span></footer>
+  <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title">
+    <div class="map-dialog-toolbar">
+      <div class="map-dialog-head">
+        <div><p class="eyebrow">LOCAL / MAP</p><h2 id="map-title">地区地图</h2></div>
+        <button id="map-close" type="button" aria-label="关闭地图">×</button>
+      </div>
+      <p id="map-location" class="map-location">尚未设置地区</p>
+      <p id="map-coordinates" class="map-coordinates"></p>
+    </div>
+    <div class="map-viewport">
+      <svg id="map-full" class="offline-map-canvas" viewBox="0 0 1000 600" role="img" tabindex="0" aria-label="本地地图。方向键移动，加减号缩放，Home 返回地区。"></svg>
+      <div class="map-controls" role="group" aria-label="地图控制">
+        <button id="map-zoom-in" type="button" aria-label="放大地图">＋</button>
+        <button id="map-zoom-out" type="button" aria-label="缩小地图">−</button>
+        <button id="map-center" type="button">回到地区</button>
+      </div>
+    </div>
+    <p id="map-status" class="map-status" role="status" aria-live="polite">正在读取本地地图…</p>
+    <div id="map-choices" class="map-choices" role="group" aria-label="确认同名城市" hidden></div>
+    <button id="map-retry" type="button" hidden>重新读取地图</button>
+    <div class="map-foot">
+      <details class="map-sources"><summary>来源</summary><small>海岸线：<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · 城市：<a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer">GeoNames</a>（<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>，已处理）</small></details>
+    </div>
+  </dialog>
+  <!-- local-wallpaper:start -->
+  <dialog id="wallpaper-dialog" class="wallpaper-dialog" aria-labelledby="wallpaper-dialog-title">
+    <div class="wallpaper-dialog-head">
+      <div><p class="eyebrow">MAKE IT YOURS</p><h2 id="wallpaper-dialog-title">DIY 空间</h2></div>
+      <button id="wallpaper-close" class="wallpaper-dialog-close" type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="diy-tabs" role="tablist" aria-label="自定义空间">
+      <button id="diy-tab-background" role="tab" type="button" aria-selected="true" aria-controls="diy-background">背景</button>
+      <button id="diy-tab-layout" role="tab" type="button" aria-selected="false" aria-controls="diy-layout" tabindex="-1">布局</button>
+      <button id="diy-tab-opening" role="tab" type="button" aria-selected="false" aria-controls="diy-opening" tabindex="-1">开场</button>
+    </div>
+    <section id="diy-background" class="diy-panel" role="tabpanel" aria-labelledby="diy-tab-background" tabindex="0">
+    <p class="wallpaper-dialog-intro">从已下载的 Wallpaper Engine 壁纸中选择。只更换网站背景，不影响桌面，也不复制壁纸文件。</p>
+    <p id="wallpaper-current" class="wallpaper-current"></p>
+    <div class="wallpaper-library-heading">
+      <h3>已下载壁纸 <span id="wallpaper-library-count"></span></h3>
+      <button id="wallpaper-library-refresh" class="diy-action" type="button">刷新列表</button>
+    </div>
+    <p id="wallpaper-library-status" class="wallpaper-dialog-note" role="status" aria-live="polite"></p>
+    <div id="wallpaper-library" class="wallpaper-library" aria-label="已下载的壁纸" aria-busy="false"></div>
+    <p class="wallpaper-dialog-note">网页壁纸直接加载；场景壁纸使用兼容播放器，部分特效可能不同或不支持。仅选择可信来源的壁纸。</p>
+    <details class="wallpaper-manual">
+    <summary>导入其他文件夹</summary>
+    <label for="wallpaper-path">壁纸文件夹</label>
+    <div class="wallpaper-path-row">
+      <input id="wallpaper-path" type="text" spellcheck="false" placeholder="例如 D:\壁纸\我的互动壁纸" autocomplete="off">
+      <button id="wallpaper-browse" class="diy-action" type="button">选择文件夹</button>
+    </div>
+    <p class="wallpaper-dialog-note">支持网页（index.html）和场景（project.json + scene.pkg）。壁纸运行在隔离的本机页面中。</p>
+    <button id="wallpaper-apply" class="diy-action diy-action-primary" type="button">使用这个背景</button>
+    </details>
+    <p id="wallpaper-message" class="wallpaper-message" role="status" aria-live="polite"></p>
+    <div class="wallpaper-dialog-actions">
+      <button id="wallpaper-default" class="diy-action" type="button">恢复默认</button>
+    </div>
+    </section>
+    <section id="diy-layout" class="diy-panel" role="tabpanel" aria-labelledby="diy-tab-layout" tabindex="0" hidden>
+      <h3>让内容待在你喜欢的位置</h3>
+      <p>个人卡片、地区与时间可以拖动和缩放。技术栈、开源项目和兴趣收藏通过个人卡片的统计项进入。编辑时壁纸保持原样。</p>
+      <p class="wallpaper-dialog-note">支持撤销、重做和恢复默认。需要至少 1000 × 640 的窗口；小屏幕保留自动排版。</p>
+      <button id="layout-start" class="layout-button diy-action" type="button" disabled>开始调整布局 <span aria-hidden="true">↗</span></button>
+    </section>
+    <section id="diy-opening" class="diy-panel" role="tabpanel" aria-labelledby="diy-tab-opening" tabindex="0" hidden>
+      <h3>进入空间的第一眼</h3>
+      <p>移动鼠标探索黑白两面，拖动不会进入；单击任意位置或按 Enter 进入主页。</p>
+      <label for="opening-frequency">自动播放</label>
+      <select id="opening-frequency">
+        <option value="always">每次打开</option>
+        <option value="session">每个标签页只播放一次</option>
+        <option value="never">不自动播放</option>
+      </select>
+      <p class="wallpaper-dialog-note">偏好只保存在当前浏览器，不随公开主页导出。直达栏目链接仍跳过开场；系统“减少动态效果”设置优先。</p>
+      <p id="opening-preference-status" role="status" aria-live="polite"></p>
+      <button id="opening-preview" class="layout-button diy-action" type="button">重播开场 <span aria-hidden="true">↗</span></button>
+    </section>
+  </dialog>
+  <!-- local-wallpaper:end -->
+  </div>
+  <!-- local-editor:start -->
+  <p id="layout-status" class="layout-status" role="status" aria-live="polite" hidden></p>
+  <dialog id="studio-dialog" class="studio-dialog" aria-labelledby="studio-dialog-title">
+    <header class="studio-bar">
+      <div><h2 id="studio-dialog-title">编辑空间</h2><p>公开内容保存后会同步到展示页</p></div>
+      <button id="studio-close" type="button">返回展示 <span aria-hidden="true">↗</span></button>
+    </header>
+    <div id="studio-loading" class="studio-loading" role="status">正在打开编辑空间… <a href="/studio" target="_blank" rel="noopener">独立打开 ↗</a></div>
+    <iframe id="studio-frame" title="个人空间内容编辑器" hidden></iframe>
+  </dialog>
+  <!-- local-editor:end -->
+  <div id="opening" class="opening" role="dialog" aria-modal="true" aria-label="互动开场，点击任意位置进入主页" hidden>
+    <div class="opening-layer opening-base">
+      <div class="opening-top">
+        <span class="opening-mark">PERSONAL / SPACE</span>
+      </div>
+      <div class="opening-center">
+        <p class="opening-eyebrow">01 — A SPACE IN PROGRESS</p>
+        <h1 class="opening-title"><span class="opening-greeting">HELLO, I'M</span><span class="opening-person"><span id="opening-name">这里的主人</span><span class="opening-period">。</span></span></h1>
+      </div>
+    </div>
+    <div id="opening-reveal" class="opening-layer opening-reveal" aria-hidden="true">
+      <div class="opening-top"><span class="opening-mark">BEYOND / THE SURFACE</span><span class="opening-index">02 / 02</span></div>
+      <div class="opening-center">
+        <p class="opening-eyebrow">THERE IS ALWAYS MORE</p>
+        <h1 id="opening-alt-title" class="opening-title">另一面<br>在这里</h1>
+        <p id="opening-alt-caption" class="opening-description">继续探索。</p>
+      </div>
+      <div class="opening-bottom"><span class="opening-hint">THIS IS MY PERSONAL SPACE</span><span class="opening-index">EXPLORE ↗</span></div>
+    </div>
+    <div id="opening-ring" class="opening-ring" aria-hidden="true"></div>
+  </div>
+</body>
+</html>

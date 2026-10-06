@@ -1,0 +1,14 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Python regression tests
+        run: python -m unittest discover -s tests -p "test_*.py"
+      - name: JavaScript regression tests
+        shell: pwsh
+        run: node --test (Get-ChildItem tests/*.mjs).FullName

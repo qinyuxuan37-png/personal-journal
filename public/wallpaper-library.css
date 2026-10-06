@@ -1,0 +1,25 @@
+.wallpaper-library-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.wallpaper-library-heading h3 { margin: 0; font-size: 16px; }
+.wallpaper-library-heading h3 span { opacity: .6; font-weight: 400; }
+.wallpaper-library-heading button { padding: 8px 12px; font-size: 13px; }
+.wallpaper-library { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
+.wallpaper-library-group { grid-column: 1 / -1; margin: 6px 0 0; font-size: 13px; font-weight: 500; opacity: .75; }
+.wallpaper-library-check { font-size: 12px; opacity: .75; }
+.pond-stage > .pond-frame { position: absolute; inset: 0; }
+.wallpaper-library .wallpaper-library-card { display: flex; flex-direction: column; padding: 0; min-width: 0; overflow: hidden; text-align: left; border: 1px solid rgb(255 255 255 / .2); border-radius: 15px; background: rgb(5 20 20 / .25); color: inherit; transition: border-color .18s, background .18s, transform .18s; }
+.wallpaper-library-card:not(:disabled):hover { transform: translateY(-2px); border-color: rgb(255 255 255 / .65); background: rgb(5 20 20 / .4); }
+.wallpaper-library-card[aria-pressed="true"] { border-color: rgb(255 255 255 / .85); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .18); }
+.wallpaper-library-card:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.wallpaper-library-preview { display: grid; place-items: center; position: relative; width: 100%; aspect-ratio: 16 / 9; background: rgb(0 0 0 / .15); overflow: hidden; }
+.wallpaper-library-preview img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wallpaper-library-placeholder { opacity: .5; font-size: 13px; }
+.wallpaper-library-caption { display: flex; flex-direction: column; padding: 12px 14px; gap: 6px; width: 100%; box-sizing: border-box; }
+.wallpaper-library-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 14px; }
+.wallpaper-library-kind { font-size: 12px; opacity: .65; }
+.wallpaper-library-action { font-size: 12px; margin-top: 3px; }
+.wallpaper-manual { border-top: 1px solid rgb(255 255 255 / .16); padding-top: 16px; margin-top: 20px; }
+.wallpaper-manual summary { cursor: pointer; margin-bottom: 16px; font-size: 14px; }
+.wallpaper-manual label { display: block; margin: 12px 0; }
+#wallpaper-library-status:empty { display: none; }
+@media (max-width: 480px) { .wallpaper-library { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .wallpaper-library .wallpaper-library-card { transition: none; transform: none; } }

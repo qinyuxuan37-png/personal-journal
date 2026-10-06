@@ -1,0 +1,38 @@
+/* One coordinated transition per action; no card replay on search or save. */
+.wallpaper-mode .main { margin-block: 0; margin-inline: auto; }
+.wallpaper-mode :is(.page-head h1,.page-head .muted,.panel,.entry,.stat,.quick-grid button,.empty,.warning,.notice) { animation: none; }
+#view-stage { min-width: 0; transform-origin: top center; }
+#view-stage[aria-busy="true"] { cursor: progress; }
+.sidebar nav { position: relative; isolation: isolate; }
+.nav-indicator { position: absolute; top: 0; left: 0; right: 0; z-index: -1; border: 1px solid rgba(255,255,255,.18); border-radius: var(--space-radius-small); background: rgba(255,255,255,.14); pointer-events: none; transition: transform 260ms var(--space-ease),height 220ms var(--space-ease); }
+.nav-indicator::before { content: ""; position: absolute; top: 25%; bottom: 25%; left: 3px; width: 2px; border-radius: 2px; background: var(--space-text); }
+.wallpaper-mode .sidebar nav.has-indicator button.active,.wallpaper-mode .sidebar nav.has-indicator button.active:hover { background: transparent; }
+.wallpaper-mode .sidebar nav.has-indicator button::before { display: none; }
+.wallpaper-mode .sidebar nav button { transition: background 160ms,color 160ms; }
+.wallpaper-mode .sidebar nav button:hover { transform: none; }
+.wallpaper-mode :is(.panel,.entry,.stat,.quick-grid button) { transition: transform 180ms var(--space-ease),border-color 180ms,box-shadow 180ms; }
+.wallpaper-mode .entry:hover { transform: none; }
+.wallpaper-mode :is(.stat,.quick-grid button):hover { transform: translateY(-2px); }
+.wallpaper-mode :is(.primary,.secondary,.danger,.icon-button) { transition: transform 150ms var(--space-ease),background 160ms,border-color 160ms,box-shadow 160ms; }
+.wallpaper-mode :is(.primary,.secondary,.danger):hover { transform: translateY(-1px); }
+.wallpaper-mode :is(button,.primary,.secondary,.danger):active:not(:disabled) { transform: scale(.98); }
+.wallpaper-mode .icon-button:hover { transform: none; }
+.wallpaper-mode .field :is(input,textarea,select):focus { box-shadow: 0 0 0 3px rgba(255,255,255,.12); }
+.wallpaper-mode .entry img,.wallpaper-mode .image-preview { transition: transform 240ms var(--space-ease); }
+.wallpaper-mode .entry:hover img,.wallpaper-mode .image-preview:hover { transform: scale(1.015); }
+.wallpaper-mode #entry-dialog[open] { animation: none; }
+.wallpaper-mode #entry-dialog[open]::backdrop { animation: entry-backdrop-in 180ms ease both; }
+.wallpaper-mode #entry-dialog.is-closing::backdrop { animation: entry-backdrop-out 150ms ease both; }
+.wallpaper-mode #entry-dialog.is-closing { pointer-events: none; }
+.wallpaper-mode #notice.notice { position: fixed; z-index: 40; top: 18px; right: 24px; max-width: min(440px,calc(100vw - 48px)); margin: 0; padding: 13px 18px; background: var(--space-panel); color: var(--space-text); border: 1px solid var(--space-line); border-radius: var(--space-radius); backdrop-filter: blur(var(--space-blur)); box-shadow: var(--space-shadow); pointer-events: none; }
+.wallpaper-mode #notice.notice.error { border-style: dashed; }
+#notice:empty { display: none; }
+.wallpaper-mode #section-title:focus { outline: none; }
+button[aria-busy="true"] { cursor: progress; }
+@keyframes entry-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes entry-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@media(prefers-reduced-motion:reduce) {
+  .nav-indicator { transition: none; }
+  .wallpaper-mode #entry-dialog[open]::backdrop { animation: none; }
+  .wallpaper-mode :is(button,.entry img,.image-preview):hover,.wallpaper-mode :is(button,.primary,.secondary,.danger):active:not(:disabled) { transform: none; }
+}

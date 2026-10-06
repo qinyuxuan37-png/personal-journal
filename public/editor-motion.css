@@ -1,0 +1,39 @@
+/* Keep the wallpaper mounted; only the editor foreground enters and leaves. */
+.studio-dialog[open] {
+  animation: studio-shell-enter 340ms var(--space-ease) both;
+  transform-origin: center 44%;
+}
+.studio-dialog[open].studio-closing {
+  animation: studio-shell-exit 220ms cubic-bezier(.4,0,1,1) both;
+  pointer-events: none;
+}
+.studio-dialog::backdrop { animation: studio-backdrop-enter 240ms ease-out both; }
+.studio-dialog.studio-closing::backdrop { animation: studio-backdrop-exit 220ms ease-in both; }
+.studio-dialog.studio-ready #studio-frame { animation: studio-frame-enter 240ms ease-out both; }
+.studio-bar button {
+  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms var(--space-ease);
+}
+.studio-bar button:active { transform: scale(.97); }
+.studio-open .site-shell > :is(.topbar, main, .footer) { transition: opacity 180ms ease; }
+.studio-open.studio-leaving .site-shell > :is(.topbar, main, .footer) { opacity: 1; }
+@keyframes studio-shell-enter {
+  from { opacity: 0; transform: translateY(14px) scale(.988); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes studio-shell-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(8px) scale(.995); }
+}
+@keyframes studio-backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes studio-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+@keyframes studio-frame-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-dialog[open], .studio-dialog[open].studio-closing,
+  .studio-dialog::backdrop, .studio-dialog.studio-closing::backdrop,
+  .studio-dialog.studio-ready #studio-frame { animation: none; }
+  .studio-bar button, .studio-open .site-shell > :is(.topbar, main, .footer) { transition: none; }
+  .studio-bar button:active { transform: none; }
+}

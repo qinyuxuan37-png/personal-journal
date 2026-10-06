@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>本机性能实测 · 临时诊断</title>
+  <link rel="stylesheet" href="/public/perf-check.css">
+  <script src="/public/perf-check.js" defer></script>
+</head>
+<body>
+  <header>
+    <strong id="progress">准备检测…</strong>
+    <button id="stop" type="button">停止检测</button>
+    <a href="/?skipIntro=1#about">返回主页</a>
+    <p>请保持此页在前台，约 1 分钟。仅自动开关面板，不保存、删除或修改个人内容。JS 堆是估值，不是浏览器总内存或显存。</p>
+    <details><summary>查看检测数据（数值仅记录到本机服务日志）</summary><pre id="results"></pre></details>
+  </header>
+  <iframe id="site" title="正在检测的个人主页"></iframe>
+</body>
+</html>

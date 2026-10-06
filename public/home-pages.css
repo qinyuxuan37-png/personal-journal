@@ -1,0 +1,58 @@
+/* Only foreground panels slide. The pond iframe never enters this layer. */
+.home-pagination { display: none; --dot-step: 32px; --dot-x: 16px; }
+.single-screen.home-view .home-pagination {
+  position: absolute; z-index: 8; bottom: max(10px, env(safe-area-inset-bottom)); left: 50%;
+  transform: translateX(-50%); display: flex; gap: 0; padding: 0;
+  border: 0; background: transparent; pointer-events: none;
+  max-width: calc(100% - 32px); overflow-x: auto; scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.home-pagination::-webkit-scrollbar { display: none; }
+.home-pagination a {
+  pointer-events: auto;
+  position: relative; display: grid; place-items: center; width: var(--dot-step); height: 44px; padding: 0;
+  border-radius: 999px; text-decoration: none; background: transparent; flex: 0 0 var(--dot-step);
+}
+.home-pagination a::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,.4); box-shadow: 0 1px 5px rgba(0,0,0,.5);
+  transition: transform 220ms var(--space-ease), background 220ms, box-shadow 220ms;
+}
+.home-pagination a:hover::before { background: rgba(255,255,255,.75); transform: scale(1.15); }
+.home-pagination a[aria-current="page"]::before { transform: scale(1.12); }
+.home-pagination:not(.has-dot-indicator) a[aria-current="page"]::before { background: #fff; transform: scale(1.3); }
+.home-pagination.has-dot-indicator::after {
+  content: ""; position: absolute; left: -4.5px; top: 17.5px;
+  width: 9px; height: 9px; border-radius: 50%; pointer-events: none;
+  background: #fff; box-shadow: 0 0 8px rgba(255,255,255,.22), 0 1px 5px rgba(0,0,0,.5);
+  transform: translateX(var(--dot-x)) scale(var(--dot-scale-x, 1), var(--dot-scale-y, 1));
+}
+/* A short, faint tail follows the dot, never a ring around its destination. */
+.home-pagination.has-dot-indicator::before {
+  content: ""; position: absolute; left: 0; top: 19px;
+  width: var(--tail-width, 0px); height: 6px; border-radius: 999px; pointer-events: none;
+  opacity: var(--tail-opacity, 0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.85));
+  transform: translateX(var(--tail-tip, 0px)) scaleX(var(--tail-direction, 1)) translateX(-100%);
+}
+.home-pagination a:active::before { transform: scale(.8); }
+.home-pagination a:focus-visible { outline: 2px solid var(--space-text); outline-offset: 3px; }
+.single-screen #content .blank-page { background: transparent; border: 0; box-shadow: none; backdrop-filter: none; pointer-events: none; }
+.single-screen #content .blank-page.is-active { display: block; padding: 0; }
+/* Layout scaffolding must not become an invisible shield over the wallpaper.
+   New DIY pages inherit this boundary without per-page IDs or JS forwarding.
+   Cards own their whole visible surface; controls keep their touch-size hit area. */
+.single-screen #content,
+.single-screen #content > [data-home-page],
+.single-screen .site-shell > .topbar { pointer-events: none; }
+.single-screen #content > [data-home-page] { touch-action: pan-y pinch-zoom; animation: none; }
+.single-screen #content > [data-home-page] :is(.hero-copy,.hero-side,[data-space-module]),
+.single-screen .topbar :is(a,button,input,select) { pointer-events: auto; }
+.single-screen .pond-frame { pointer-events: auto; }
+.single-screen #content .page-sliding { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; animation: none; will-change: transform; }
+.layout-editing .home-pagination,.intro-active .home-pagination { visibility: hidden; pointer-events: none; }
+@media (prefers-reduced-motion:reduce) {
+  .home-pagination a::before,.home-pagination.has-dot-indicator::after { transition: none; }
+  .home-pagination.has-dot-indicator::before,.home-pagination.has-dot-indicator::after { animation: none; transition: none; }
+  .home-pagination.has-dot-indicator::before { opacity: 0; }
+}

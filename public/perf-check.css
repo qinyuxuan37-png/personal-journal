@@ -1,0 +1,8 @@
+html, body { margin: 0; height: 100%; background: #10191b; color: #e8eeee; font: 14px/1.5 system-ui, sans-serif; }
+body { display: flex; flex-direction: column; }
+header { padding: 12px 20px; flex: none; }
+button, a { margin-left: 16px; color: inherit; }
+button { background: #263638; border: 1px solid #617273; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+p { margin: 6px 0; color: #b7c4c4; }
+pre { max-height: 180px; overflow: auto; white-space: pre-wrap; }
+iframe { border: 0; flex: 1; min-height: 0; width: 100%; background: transparent; }
